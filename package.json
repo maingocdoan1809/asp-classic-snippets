@@ -2,7 +2,10 @@
   "name": "asp-classic-huce",
   "displayName": "Asp Classic HUCE",
   "description": "This extension is to support APS classic developer",
-  "version": "0.0.1",
+  "repository": {
+    "url": "https://github.com/maingocdoan1809/asp-classic-snippets.git"
+  },
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.79.0"
   },

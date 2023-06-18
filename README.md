@@ -43,7 +43,7 @@ Please give me any complaints about this extension via my email: doan1509765@huc
 
 `rs_close` : Close the record set.
 
-`include` : "Include an asp file.
+`include` : Include an asp file.
 
 `redirect` :Redirect to a new location.
 

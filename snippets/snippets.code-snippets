@@ -181,5 +181,67 @@
     ],
     "prefix": "try",
     "description": "Try-catch block"
+  },
+  "Dictionary": {
+    "body": [
+      "Set ${1:dicname} = Server.CreateObject(\"Scripting.Dictionary\")"
+    ],
+    "prefix": "dic",
+    "description": "Create a dictionary object."
+  },
+  "Function": {
+    "body": ["Public Function ${1:signature}", "", "  End Function"],
+    "prefix": "try",
+    "description": "Try-catch block"
+  },
+  "IF ElseIf": {
+    "body": [
+      "If ${1:condition} then",
+      "",
+      "Elseif ${1:anotherCondition} then",
+      "",
+      "Else",
+      "",
+      "End if"
+    ],
+    "prefix": "if_elseif",
+    "description": "If else statement"
+  },
+  "Select case": {
+    "body": [
+      "Select case ${1:option}",
+      "Case ${1:your_option_case}",
+      "",
+      "Case else",
+      "'default case",
+      "End Select"
+    ],
+    "prefix": "switch",
+    "description": "Switch case statement"
+  },
+  "New regex object": {
+    "body": ["Set ${1:regx} = New RegExp "],
+    "prefix": "regex",
+    "description": "Create a new Regular Expression Object"
+  },
+  "Set pattern for your Regex object": {
+    "body": [" ${1:regx}.Pattern = New RegExp "],
+    "prefix": "regex_pattern",
+    "description": "Set pattern for your Regular Expression Object to test."
+  },
+  "Set Ignore case or not": {
+    "body": [" ${1:regx}.IgnoreCase = ${2:True|False} "],
+    "prefix": "regex_ignore_case",
+    "description": "Set the pattern to be case-sensitive or not."
+  },
+  "Excecute Regex": {
+    "body": [" Set ${1:matches} = ${2:regx}.Execute(${3:string})"],
+    "prefix": "regex_exec",
+    "description": "Execute a regex object to test the given string and return a Match object."
+  },
+  "Matches Count": {
+    "body": [" ${1:matches}.Count"],
+    "prefix": "regex_matches_count",
+    "description": "Return the number of matched substrings"
   }
 }

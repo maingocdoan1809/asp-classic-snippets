@@ -1,5 +1,9 @@
 # Change Log
 
-## 1.0.1
+## 0.0.2
 
-Add some new snippet
+Add some new snippet.
+
+## 0.0.3
+
+Add snippets to support Regular expression.
