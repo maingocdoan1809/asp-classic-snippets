@@ -1,0 +1,185 @@
+{
+  "Print to console": {
+    "prefix": "log",
+    "body": ["Response.Write($1)"],
+    "description": "Write a response to user."
+  },
+  "Add item to dictionary": {
+    "prefix": "dic_add",
+    "body": ["${1:dict}.Add \"${2:key}\", \"${3:value}\""],
+    "description": "Add new key-value pair to a dictionary."
+  },
+  "Dict Get": {
+    "prefix": "dic_get",
+    "body": ["${1:dict}.Item(\"${2:key}\")"],
+    "description": "Set or get an item with its correspond  key."
+  },
+  "Dict Items": {
+    "prefix": "dic_vals",
+    "body": ["${1:dict}.Items"],
+    "description": "Return an array of values."
+  },
+
+  "Dict Keys": {
+    "prefix": "dic_keys",
+    "body": ["${1:dict}.Keys"],
+    "description": "Return an array of keys."
+  },
+  "Dict Count": {
+    "prefix": "dic_count",
+    "body": ["${1:dict}.Count"],
+    "description": "Return the size of the dictionary."
+  },
+  "Dict Remove": {
+    "prefix": "dic_remove",
+    "body": ["${1:dict}.Remove(\"${2:key}\")"],
+    "description": "Remove a key-value pair."
+  },
+  "Dict RemoveAll": {
+    "prefix": "dic_rma",
+    "body": ["${1:dict}.RemoveAll()"],
+    "description": "Remove all keys and values in a dictionary."
+  },
+  "Session": {
+    "prefix": "ses",
+    "body": ["Session(\"${1:key}\")"],
+    "description": "Create a session key."
+  },
+  "Session content": {
+    "prefix": "ses_contents",
+    "body": ["Session.Contents"],
+    "description": "Return an array of all keys in session."
+  },
+  "Session remove": {
+    "prefix": "ses_rm",
+    "body": ["Session.Contents.Remove(${1:\"key\"})"],
+    "description": "Remove a key from session."
+  },
+  "Session removeall": {
+    "prefix": "ses_des",
+    "body": ["Session.Contents.RemoveAll()"],
+    "description": "Remove all keys from session."
+  },
+  "Session count": {
+    "prefix": "ses_count",
+    "body": ["Session.Contents.Count"],
+    "description": "Return the size of session."
+  },
+  "Sql": {
+    "prefix": "conn",
+    "body": ["set conn=Server.CreateObject(\"ADODB.Connection\")"],
+    "description": "Create a connection object"
+  },
+  "Sql full": {
+    "prefix": "conn_all",
+    "body": [
+      "set conn=Server.CreateObject(\"ADODB.Connection\")",
+      "conn.Open \"Provider=${1:SQLOLEDB}; Data Source = ${2:(local)}; Initial Catalog = ${3:Test} ; User Id = ${4:sa}; Password= ${5:123456}\"",
+      "set recordset=Server.CreateObject(\"ADODB.recordset\") ",
+      "recordset.open ${1:queryStr}, conn"
+    ],
+    "description": "Create a full connection variable to sql server."
+  },
+  "Recordset EOF": {
+    "prefix": "rs_is_end",
+    "body": ["${1:recordset}.EOF"],
+    "description": "Check if this is the end of the record set."
+  },
+  "Recordset fields": {
+    "prefix": "rs_fields",
+    "body": ["${1:recordset}.fields(\"${2:columnName}\")"],
+    "description": "Get data associating with a field."
+  },
+  "Recordset close": {
+    "prefix": "rs_close",
+    "body": ["${1:recordset}.Close"],
+    "description": "Close the record set."
+  },
+  "Include file": {
+    "body": ["<!-- #include file=\"${1:filename}\" -->"],
+    "prefix": "include",
+    "description": "Include an asp file."
+  },
+  "Redirect": {
+    "body": ["Response.Redirect(\"${1:url}\")"],
+    "prefix": "redirect",
+    "description": "Redirect to a new location"
+  },
+  "Transaction": {
+    "body": [
+      "${1:conn}.BeginTrans",
+      "$2",
+      "On Error Resume Next",
+      "  If Err.Number = 0 then",
+      "    $3 //Success",
+      "    ${4:conn}.CommitTrans",
+      "  Else",
+      "    $5 // handle Error",
+      "    ${6:conn}.RollbackTrans",
+      "  End if",
+      "On Error Goto 0"
+    ],
+    "prefix": "trans",
+    "description": "Start a simple transaction."
+  },
+  "Recordset": {
+    "body": ["set ${1:recordset}=Server.CreateObject(\"ADODB.recordset\") "],
+    "prefix": "rs",
+    "description": "Create a recordset"
+  },
+  "Recordset query": {
+    "body": ["${1:recordset}.open ${2:conn}, ${3:queryStr}"],
+    "prefix": "rs_query",
+    "description": "Query to database"
+  },
+  "File": {
+    "body": [
+      "Set fso = Server.CreateObject(\"Scripting.FileSystemObject\") ",
+      "set fs = fso.OpenTextFile(Server.MapPath(\"${1:fileurl}\"), 1, true)"
+    ],
+    "prefix": "fstream",
+    "description": "Create a file stream and open it."
+  },
+  "Read file": {
+    "body": ["${1:fs}.ReadFile"],
+    "prefix": "fs_read",
+    "description": "Read a single line in a file."
+  },
+  "File EOF": {
+    "body": ["${1:fs}.AtEndOfStream"],
+    "prefix": "fs_end",
+    "description": "Whether it is the end of file."
+  },
+  "File Output stream": {
+    "body": ["${1:fs}.CreateTextFile(${2:filename})"],
+    "prefix": "fs_write",
+    "description": "Open or create a new file to wirte to it."
+  },
+  "For each": {
+    "body": ["For Each ${1:iter} in ${2:array}", "", "Next"],
+    "prefix": "foreach",
+    "description": "Loop through an array."
+  },
+  "Asp tag": {
+    "body": "[<% $1 %>]",
+    "prefix": "asp",
+    "description": "Asp tag"
+  },
+  "While loop": {
+    "body": ["While ${1:condition}", "", "Loop"],
+    "prefix": "asp",
+    "description": "Asp tag"
+  },
+  "Try Catch": {
+    "body": [
+      "On Error Resume Next",
+      "${1:try}",
+      "  If Err.Number <> 0 then",
+      "    ${1:catch}",
+      "  End if",
+      "On Error Goto 0"
+    ],
+    "prefix": "try",
+    "description": "Try-catch block"
+  }
+}

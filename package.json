@@ -1,0 +1,21 @@
+{
+  "name": "asp-classic-huce",
+  "displayName": "Asp Classic HUCE",
+  "description": "This extension is to support APS classic developer",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.79.0"
+  },
+  "publisher": "maingocdoanhuce",
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "asp",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}
